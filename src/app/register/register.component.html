@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<style>
+    .v{
+        border: 2px solid green;
+    }
+    .i{
+        border: 2px solid rgb(229, 0, 0);
+    }
+    .btn-clr{
+        background-color: orange;
+    }
+    .w-2{
+      max-width: 450px;
+    }
+</style>
+<div class="py-5">
+    <div class="w-2 mx-auto shadow-lg py-3 rounded">
+       
+    <form action=""  #f="ngForm" (ngSubmit)="validate(f.value)" class="mt-3 mx-4">
+        <h3 class="text-center">Register </h3>
+      
+        <input type="text" ngModel #u="ngModel" name="uname" id="" class="form-control mb-3" placeholder="Enter Username" required pattern="[a-z]+" [class.v]="u.valid" [class.i]="u.invalid && u.touched"/>
+        <div *ngIf="u.errors?.['required'] && u.touched" class="text-danger">Enter Username</div>
+        <div *ngIf="u.errors?.['pattern'] && u.touched" class="text-danger">invalid pattern enter only alphabets</div>
+        
+        <input type="text" ngModel #e="ngModel" name="email" id="" class="form-control mb-3" placeholder="Enter Email" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" [class.v]="e.valid" [class.i]="e.invalid && e.touched"/>
+        <div *ngIf="e.errors?.['required'] && e.touched" class="text-danger">Enter Email</div>
+        <div *ngIf="e.errors?.['pattern'] && e.touched" class="text-danger">Invalid email</div>
+        
+        <input type="password" ngModel #p="ngModel" name="pwd" id="" class="form-control mb-3" placeholder="Enter Password" required pattern="[a-z0-9]+" [class.v]="p.valid" [class.i]="p.invalid && p.touched" />
+        <div *ngIf="p.errors?.['required'] && p.touched" class="text-danger">Enter Password</div>
+
+        <input type="password" ngModel #cp="ngModel" name="cpwd" id="" class="form-control mb-3" placeholder="Enter Confirm Password" required pattern="[a-z0-9]+" [class.v]="p.value==cp.value  && cp.touched " [class.i]="p.value!=cp.value  && cp.touched" />
+        <div *ngIf="cp.errors?.['required'] && cp.touched" class="text-danger">Enter Confirm Password</div>
+        <div *ngIf="p.value!=cp.value && cp.touched" class="text-danger">Password and Confirm Password not match</div>
+
+        Male<input type="radio" name="ml"  id="m" class="form-check-input mt-2 mx-3 my-3" >
+        Female<input type="radio" name="ml"  id="f" class="form-check-input mt-2 mx-3">
+
+        <select name=""  class="form-select" ngModel #se="ngModel">
+            <option [value]="v" *ngFor="let v of states">{{v}}</option>
+        </select>
+
+
+    
+    
+        <div *ngIf="p.errors?.['pattern'] && p.touched" class="text-danger">invalid pattern enter only lowercase alphabets or numbers</div>
+        <button type="submit" class="btn btn-clr my-3 w-100 fw-bold">Register </button>
+        <div class="mb-2" [ngClass]="clr">{{err}}</div>
+    </form>
+    <span class="px-4">If you have an account <a routerLink="/login" class="text-decoration-none">Login </a></span><br><br>
+    </div>
+    </div>

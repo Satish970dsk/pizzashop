@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1 class="text-center my-3">Trending Items</h1>
+
+    <div class="row" *ngIf="x">
+        <div class="col-sm-6 col-md-4 col-lg-3 col-12 mb-3" *ngFor="let p of pizzadetails">
+            <div class="card">
+                <div class="img" width="3000px">
+                <img [src]="p.img" alt="" class="w-100" height="150px">
+            </div>
+            <div class="card-body">
+                <h5>{{p.name}}</h5>
+                <p>{{p.oprice | currency:'INR'}}</p>
+                <p>{{p.offprice}}</p>
+                <p>{{p.description}}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+                <!-- <a href="" class="btn btn-success">Oreder now</a> -->
+                <a routerLink="/order" [queryParams]="{a:p.id ,b:p.name,c:p.oprice,d:p.offprice,e:p.img,f:p.description}" class="btn btn-success">Buy Now</a>
+                <a routerLink="/cart" class="btn btn-warning"  [queryParams]="{a:p.id ,b:p.name,c:p.oprice,d:p.offprice,e:p.img,f:p.description}">Add to cart</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    <button (click)="displayallpizzas()">display pizza</button>
+</div>
+

@@ -1,0 +1,16 @@
+.l{
+    cursor: pointer;
+  }
+  .n{
+    background-color: white;
+    color: black;
+    box-shadow: 4px 10px 20px rgba(0,0,0,0.6);
+  }
+  .n li a{
+    color: black;
+  }
+  .bgdark{
+    background-color:black;
+    color: white;
+    box-shadow: 4px 10px 20px rgba(0,0,0,0.6);
+  }
