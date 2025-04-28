@@ -15,19 +15,21 @@ export class ViewpizzaComponent {
   x=false
   pizzadetails:Iprod[]=[]
   error:any
+  flproducts:Iprod[]=[]
 
   ngOnInit(){
     this.displayallpizzas()
+
     this.x=true
   }
 
   displayallpizzas(){
     this.ob.getpizza().subscribe({
-      next: (res:any) => this.pizzadetails = res,
+      next: (res:any) => {this.pizzadetails = res;this.flproducts=this.pizzadetails},
       error: (err) => this.error = err.message
     })
     // console.log(this.pizzadetails);
-   
+    this.flproducts=this.pizzadetails
     
     
   }
